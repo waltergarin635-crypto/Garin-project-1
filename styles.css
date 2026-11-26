@@ -27,6 +27,10 @@ html {
   font-size: 16px;
 }
 
+main section[id] {
+  scroll-margin-top: 24px;
+}
+
 body {
   margin: 0;
   color: var(--ink);
@@ -100,6 +104,16 @@ img {
 .nav a,
 .social-links a {
   transition: opacity 180ms ease;
+}
+
+.nav a:focus-visible,
+.availability:focus-visible,
+.button:focus-visible,
+.text-link:focus-visible,
+.contact-link:focus-visible,
+.social-links a:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 5px;
 }
 
 .nav a:hover,
