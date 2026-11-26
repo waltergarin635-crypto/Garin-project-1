@@ -516,6 +516,18 @@ a {
   gap: 9px;
 }
 
+.about-details {
+  display: grid;
+  gap: 24px;
+}
+
+.about-details h3 {
+  margin: 0 0 12px;
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .skills span {
   padding: 10px 14px;
   border: 1px solid var(--line);
