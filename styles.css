@@ -221,34 +221,13 @@ a {
   box-shadow: 24px 24px 0 rgba(220, 232, 122, 0.28);
 }
 
-.portrait-card::before {
-  content: "";
+.portrait-card img {
   position: absolute;
-  width: 210px;
-  height: 210px;
-  bottom: -36px;
-  border-radius: 50% 50% 42% 42%;
-  background: var(--ink);
-}
-
-.portrait-card::after {
-  content: "";
-  position: absolute;
-  width: 120px;
-  height: 150px;
-  top: 92px;
-  border-radius: 52% 52% 48% 48%;
-  background: #c98f69;
-  box-shadow: 0 -28px 0 -8px #3c332d;
-}
-
-.portrait-initials {
-  position: absolute;
-  z-index: 3;
-  bottom: 24px;
-  color: #fff;
-  font-family: Georgia, serif;
-  font-size: 22px;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
 }
 
 .floating-note {
