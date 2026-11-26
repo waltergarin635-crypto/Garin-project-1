@@ -22,6 +22,38 @@
   box-sizing: border-box;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portrait-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) rotate(2deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -115,6 +147,25 @@ img {
   transition: opacity 180ms ease;
 }
 
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -5px;
+  height: 2px;
+  background: var(--ink);
+  transition: right 220ms ease;
+}
+
+.nav a:hover::after {
+  right: 0;
+}
+
 .nav a:focus-visible,
 .availability:focus-visible,
 .button:focus-visible,
@@ -195,6 +246,7 @@ img {
 .hero-copy {
   max-width: 710px;
   padding: 64px 24px 64px 0;
+  animation: fade-up 700ms ease-out both;
 }
 
 .eyebrow {
@@ -252,11 +304,25 @@ img {
   border-radius: 4px;
   font-size: 14px;
   font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
 .button-primary {
   background: var(--ink);
   color: #fff;
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(32, 32, 30, 0.18);
+}
+
+.text-link {
+  transition: gap 180ms ease, opacity 180ms ease;
+}
+
+.text-link:hover {
+  opacity: 0.62;
 }
 
 .text-link {
@@ -277,6 +343,7 @@ img {
   justify-self: end;
   display: grid;
   place-items: center;
+  animation: portrait-in 800ms 150ms ease-out both;
 }
 
 .portrait-ring {
@@ -361,11 +428,13 @@ img {
 .note-top {
   top: 94px;
   left: -12px;
+  animation: float 4s ease-in-out infinite;
 }
 
 .note-bottom {
   right: -20px;
   bottom: 68px;
+  animation: float 4.5s 800ms ease-in-out infinite;
 }
 
 .note-icon {
@@ -427,11 +496,28 @@ img {
 }
 
 .project {
-  transition: transform 220ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .project:hover {
   transform: translateY(-6px);
+}
+
+.project-art {
+  transition: filter 220ms ease;
+}
+
+.project:hover .project-art {
+  filter: saturate(1.08) contrast(1.02);
+}
+
+.project-arrow {
+  transition: transform 220ms ease, background-color 220ms ease;
+}
+
+.project:hover .project-arrow {
+  transform: rotate(45deg);
+  background: var(--lime);
 }
 
 .project-large .project-art {
@@ -740,6 +826,20 @@ body:has(.theme-toggle-input:checked) .contact {
 .theme-toggle-input:focus-visible ~ .site-header .theme-toggle {
   outline: 3px solid var(--green);
   outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
   font-weight: 700;
 }
 
